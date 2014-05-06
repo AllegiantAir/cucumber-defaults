@@ -31,3 +31,34 @@ features/step_definitions/defaultSteps.js written with defaults
 features/support/defaultHooks.js written with defaults
 features/support/world.js written with defaults
 ```
+
+try this on for size, use this as a package.json for a test project:
+
+```
+{
+  "name": "cuke",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "devops-cucumber-defaults": "git+ssh://git@git.allegiantair.com:7999/devops/cucumber-defaults.git",
+    "cucumber": "*",
+    "wd": "*",
+    "url": "*"
+  }
+}
+```
+
+now use this as a feature file (example.feature):
+
+```
+Feature: search functionality
+  As a call center user
+
+  Background:
+    Given I am on the homepage
+
+  Scenario: This does not exist
+    When I fill in "Allegiant Air" for "q"
+    Then I should see text matching "Allegiant Air"
+```

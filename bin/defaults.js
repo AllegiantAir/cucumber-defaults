@@ -7,6 +7,9 @@ var fs = require('fs');
 
 var dirMode = '0755';
 
+var configDir = 'config/';
+var defaultConfig = 'config/default.yaml';
+
 var featuresDir = 'features/';
 var stepDefinitionsDir = featuresDir + 'step_definitions/'
 var defaultStepsFile = stepDefinitionsDir + 'defaultSteps.js';
@@ -22,6 +25,7 @@ var createDir = function (dirName, mode) {
     } catch(e) {}
 }
 
+createDir(configDir, dirMode);
 createDir(featuresDir, dirMode);
 createDir(stepDefinitionsDir, dirMode);
 createDir(supportDir, dirMode);
@@ -36,6 +40,11 @@ var writeDefaults = function(fileName, data) {
         }
     });
 }
+
+writeDefaults(
+    defaultConfig,
+    "cucumber:\n  keepBrowserOpen: true\n  browserOptions:\n    browserName: chrome\n  serverOptions: []\n  baseUrl: \"http://google.com\"\n"
+);
 
 writeDefaults(
     defaultStepsFile,
