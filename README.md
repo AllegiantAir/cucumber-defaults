@@ -44,12 +44,14 @@ try this on for size, use this as a package.json for a test project:
     "devops-cucumber-defaults": "git+ssh://git@git.allegiantair.com:7999/devops/cucumber-defaults.git",
     "cucumber": "*",
     "wd": "*",
-    "url": "*"
+    "url": "*",
+    "yaml": "*",
+    "config": "*"
   }
 }
 ```
 
-now use this as a feature file (example.feature):
+now use this as a feature file (features/example.feature):
 
 ```
 Feature: search functionality
@@ -61,4 +63,10 @@ Feature: search functionality
   Scenario: This does not exist
     When I fill in "Allegiant Air" for "q"
     Then I should see text matching "Allegiant Air"
+```
+
+now run:
+
+```
+./node_modules/.bin/cucumber.js
 ```
