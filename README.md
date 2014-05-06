@@ -65,8 +65,11 @@ Feature: search functionality
     Then I should see text matching "Allegiant Air"
 ```
 
+make sure selenium is running
+
 now run:
 
 ```
 ./node_modules/.bin/cucumber.js
 ```
+
