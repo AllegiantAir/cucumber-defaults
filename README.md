@@ -10,11 +10,18 @@ add this module to your project then run:
 ./node_modules/.bin/cucumberSetupDefaults
 ```
 
+now put a feature file in the features folder, then run:
+
+```javascript
+cucumber.js
+```
+
 Setup
 -----
 
 This gives a project a default set of steps for Behavior Driven Development
-on a clean (untested) project the above will output the following:
+
+On a clean (untested) project the above will output the following:
 
 ```
 features/ created
