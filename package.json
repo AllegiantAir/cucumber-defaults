@@ -1,0 +1,31 @@
+{
+  "name": "devops-cucumber-defaults",
+  "description": "Default for our Cucumber.js setup",
+  "version": "0.0.1",
+  "author": {
+    "name": "Jordan Raub",
+    "email": "jordan.raub@alligiantair.com"
+  },
+
+  "dependencies": {
+    "cucumber": "*",
+    "wd": "*",
+    "url": "*"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@git.allegiantair.com:7999/devops/cucumber-defaults.git"
+  },
+
+  "main": "lib/world.js",
+
+  "bin": {
+    "cucumberSetupDefaults": "bin/defaults.js"
+  },
+
+  "readmeFilename": "README.md",
+
+  "private": true
+}
+
