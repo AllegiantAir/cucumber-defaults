@@ -11,7 +11,8 @@
     "cucumber": "*",
     "wd": "*",
     "url": "*",
-    "config": "*"
+    "config": "*",
+    "yaml": "*"
   },
 
   "repository": {
