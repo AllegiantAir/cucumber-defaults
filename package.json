@@ -10,7 +10,8 @@
   "dependencies": {
     "cucumber": "*",
     "wd": "*",
-    "url": "*"
+    "url": "*",
+    "config": "*"
   },
 
   "repository": {
