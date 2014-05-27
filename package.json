@@ -6,27 +6,22 @@
     "name": "Jordan Raub",
     "email": "jordan.raub@alligiantair.com"
   },
-
   "dependencies": {
     "cucumber": "*",
     "wd": "*",
     "url": "*",
     "config": "*",
-    "yaml": "*"
+    "yaml": "*",
+    "lodash": "^2.4.1"
   },
-
   "repository": {
     "type": "git",
     "url": "ssh://git@git.allegiantair.com:7999/devops/cucumber-defaults.git"
   },
-
   "main": "lib/world.js",
-
   "bin": {
     "cucumberSetupDefaults": "bin/defaults.js"
   },
-
   "readmeFilename": "README.md",
-
   "private": true
 }
