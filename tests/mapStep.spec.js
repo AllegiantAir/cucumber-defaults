@@ -39,112 +39,224 @@ var mapSteps = require('../lib/map-steps').MapSteps,
     };
 
 describe('Map Steps', function() {
-  var selfMock,
-      deferCallback,
-      callbackMock,
-      test,
-      browser = wd.promiseChainRemote();
+    var selfMock,
+        deferCallback,
+        callbackMock,
+        test,
+        browser = wd.promiseChainRemote();
 
-  beforeEach(function () {
-    deferCallback = Q.defer();
+    beforeEach(function () {
+        deferCallback = Q.defer();
 
-    callbackMock = function() {
-      deferCallback.resolve(Q.fcall(function(){
-        test('callback');
-      }));
-    };
-    callbackMock.pending = function() {
-      deferCallback.resolve(Q.fcall(function(){
-        test('pending');
-      }));
-    };
-    callbackMock.fail = function() {
-      deferCallback.resolve(Q.fcall(function(){
-        test('fail');
-      }));
-    };
+        callbackMock = function() {
+            deferCallback.resolve(Q.fcall(function(){
+                test('callback');
+            }));
+        };
+        callbackMock.pending = function() {
+            deferCallback.resolve(Q.fcall(function(){
+                test('pending');
+            }));
+        };
+        callbackMock.fail = function() {
+            deferCallback.resolve(Q.fcall(function(){
+                test('fail');
+            }));
+        };
 
-    selfMock = {
-      asserters: wd.asserters,
-      url: function (uri) {
-        return url.resolve(baseUrl, uri);
-      },
-      namedSelectors: namedSelectors,
-      baseUrl: baseUrl,
-      browser: browser.init({
-        browserName: 'chrome'
-      })
-    };
+        selfMock = {
+            asserters: wd.asserters,
+            url: function (uri) {
+                return url.resolve(baseUrl, uri);
+            },
+            namedSelectors: namedSelectors,
+            baseUrl: baseUrl,
+            browser: browser.init({
+                browserName: 'chrome'
+            })
+        };
 
-    return selfMock.browser;
-  });
-
-  afterEach(function(done) {
-    selfMock.browser.quit(function() {
-      done();
-    });
-  });
-
-  describe('iGoToHomepage', function() {
-
-    it('should call callback()', function() {
-      // Test gets executed when either of the following gets called:
-      // callback(); -----------> callbackValue = 'callback'
-      // callback.pending(); ---> callbackValue = 'pending'
-      // callback.fail(); ------> callbackValue = 'fail'
-      //
-      // callbackValue denotes which of the above was called
-      test = function(callbackValue) {
-        callbackValue.should.equal('callback');
-      };
-
-      // Map Steps is asynchronous so we need to return
-      // a promise that will then test our assertions.
-      mapSteps.iGoToHomepage(callbackMock, selfMock);
-
-      return deferCallback.promise;
+        return selfMock.browser;
     });
 
-  });
-
-  describe('fillIn', function() {
-    it('should call callback()', function() {
-      // Test gets executed when either of the following gets called:
-      // callback(); -----------> callbackValue = 'callback'
-      // callback.pending(); ---> callbackValue = 'pending'
-      // callback.fail(); ------> callbackValue = 'fail'
-      //
-      // callbackValue denotes which of the above was called
-      test = function(callbackValue) {
-        callbackValue.should.equal('callback');
-      };
-
-      chain([
-        ['cb', selfMock, mapSteps.iGoToHomepage],
-        ['Test Field:', 'test data', callbackMock, selfMock, mapSteps.fillIn]
-      ]);
-
-      return deferCallback.promise;
+    afterEach(function(done) {
+        selfMock.browser.quit(function() {
+            done();
+        });
     });
 
-    it('should call callback.fail()', function() {
-      // Test gets executed when either of the following gets called:
-      // callback(); -----------> callbackValue = 'callback'
-      // callback.pending(); ---> callbackValue = 'pending'
-      // callback.fail(); ------> callbackValue = 'fail'
-      //
-      // callbackValue denotes which of the above was called
-      test = function(callbackValue) {
-        callbackValue.should.equal('fail');
-      };
+    describe('iGoToHomepage', function() {
 
-      chain([
-        ['cb', selfMock, mapSteps.iGoToHomepage],
-        ['Test Field Should Not Exists:', 'test data', callbackMock, selfMock, mapSteps.fillIn]
-      ]);
+        it('should call callback()', function() {
+            // Test gets executed when either of the following gets called:
+            // callback(); -----------> callbackValue = 'callback'
+            // callback.pending(); ---> callbackValue = 'pending'
+            // callback.fail(); ------> callbackValue = 'fail'
+            //
+            // callbackValue denotes which of the above was called
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+            };
 
-      return deferCallback.promise;
+            // Map Steps is asynchronous so we need to return
+            // a promise that will then test our assertions.
+            mapSteps.iGoToHomepage(callbackMock, selfMock);
+
+            return deferCallback.promise;
+        });
+
     });
-  });
+
+    describe('fillIn', function() {
+        it('should call callback()', function() {
+            // Test gets executed when either of the following gets called:
+            // callback(); -----------> callbackValue = 'callback'
+            // callback.pending(); ---> callbackValue = 'pending'
+            // callback.fail(); ------> callbackValue = 'fail'
+            //
+            // callbackValue denotes which of the above was called
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Test Field:', 'test data', callbackMock, selfMock, mapSteps.fillIn]
+            ]);
+
+            return deferCallback.promise;
+        });
+
+        it('should call callback.fail()', function() {
+            // Test gets executed when either of the following gets called:
+            // callback(); -----------> callbackValue = 'callback'
+            // callback.pending(); ---> callbackValue = 'pending'
+            // callback.fail(); ------> callbackValue = 'fail'
+            //
+            // callbackValue denotes which of the above was called
+            test = function(callbackValue) {
+                callbackValue.should.equal('fail');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Test Field Should Not Exists:', 'test data', callbackMock, selfMock, mapSteps.fillIn]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('fieldExists', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['#fieldExists', callbackMock, true, selfMock, mapSteps.fieldExists]
+            ]);
+
+            return deferCallback.promise;
+        });
+
+        it('should call callback.fail()', function() {
+            // Test gets executed when either of the following gets called:
+            // callback(); -----------> callbackValue = 'callback'
+            // callback.pending(); ---> callbackValue = 'pending'
+            // callback.fail(); ------> callbackValue = 'fail'
+            //
+            // callbackValue denotes which of the above was called
+            test = function(callbackValue) {
+                callbackValue.should.equal('fail');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['#fieldExists2', callbackMock, false, selfMock, mapSteps.fieldExists]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('fieldContains', function(){
+
+        it('should call callback()', function(){
+
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['This is a test for field contains', '#textAreaTest', callbackMock, true, selfMock, mapSteps.fieldContains]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('checkbox', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Checkbox test:', callbackMock, true, selfMock, mapSteps.checkbox]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('element exists by tagname', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['<textarea></textarea>', callbackMock, true, selfMock, mapSteps.elementExists]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('element contains tagname content', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['This is a test for field contains', '#textAreaTest', callbackMock, true, selfMock, mapSteps.elementContains]
+            ]);
+
+            return deferCallback.promise;
+        })
+    });
+
+    describe('field has focus', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Input field:', callbackMock, true, selfMock, mapSteps.hasFocus]
+            ]);
+
+            return deferCallback.promise;
+        });
+
+    });
 
 });
