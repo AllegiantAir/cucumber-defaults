@@ -191,7 +191,7 @@ describe('Map Steps', function() {
 
             chain([
                 ['cb', selfMock, mapSteps.iGoToHomepage],
-                ['This is a test for field contains', '#textAreaTest', callbackMock, true, selfMock, mapSteps.fieldContains]
+                ['This is a test for field contains', 'Text Area Test', callbackMock, true, selfMock, mapSteps.fieldContains]
             ]);
 
             return deferCallback.promise;
@@ -257,6 +257,36 @@ describe('Map Steps', function() {
             return deferCallback.promise;
         });
 
+    });
+
+    describe('element is checked', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Checkbox test:', callbackMock, selfMock, 'true', mapSteps.isChecked]
+            ]);
+
+            return deferCallback.promise;
+        })
+    });
+
+    describe('element content is present', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['#textAreaTest This is a test for field contains', callbackMock, selfMock, true, mapSteps.isPresent]
+            ]);
+
+            return deferCallback.promise;
+        });
     });
 
 });
