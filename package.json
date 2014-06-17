@@ -14,6 +14,12 @@
     "yaml": "*",
     "lodash": "^2.4.1"
   },
+  "devDependencies": {
+    "q": "*",
+    "should": "*",
+    "sinon": "*",
+    "mocha": "*"
+  },
   "repository": {
     "type": "git",
     "url": "ssh://git@git.allegiantair.com:7999/devops/cucumber-defaults.git"
