@@ -1,19 +1,94 @@
 <html>
 <head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <label for="t">Test Field:</label>
-    <input type="text" id="t" name="t" placeholder="Test Field:"></input>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Anchor element - used when testing clicks on a link</h3>
+    </div>
+    <div class="panel-body">
+        <label id="top">Top of the document anchor element</label>
+    </div>
+</div>
 
-    <label for="fieldExists">Input field:</label>
-    <input type="text" id="fieldExists" name="inputField" placeholder="Input field:"></input>
 
-    <label for="checkboxTest">Checkbox test:</label>
-    <input type="checkbox" id="checkboxTest" name="checkboxTest" checked title="checkboxTesting"></input>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Input fields - used for testing focus and other field tests</h3>
+    </div>
+    <div class="panel-body">
+        <label for="t">Test Field:</label>
+        <input style="margin-right:10px;" type="text" id="t" name="t" placeholder="Test Field:"></input>
+        <label for="fieldExists">Input field:</label>
+        <input type="text" id="fieldExists" name="inputField" placeholder="Input field:"></input>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Checkbox element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="checkboxTest">Checkbox test:</label>
+        <input type="checkbox" id="checkboxTest" name="checkboxTest" checked title="checkboxTesting"></input>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Text area element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="textAreaTest">Text Area Test</label>
+        <textarea id="textAreaTest" name="textArea">This is a test for field contains</textarea>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Select Element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="selectUnitTest">Select Element Unit Test</label>
+        <select id="selectUnitTest">
+            <option value="nodejs">NodeJS</option>
+            <option value="express">Express</option>
+            <option value="bootstrap">Bootstrap</option>
+            <option value="angularjs">AngularJS</option>
+        </select>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">List element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="listForNElements">Label for List</label>
+        <ul id="listForNElements">
+            <li>Element 1</li>
+            <li>Element 2</li>
+            <li>Element 3</li>
+        </ul>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Button element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="buttonUnitTest">Button Unit Test</label>
+        <input type="submit" id="buttonUnitTest" value="Click Me" name="buttonUnitTest" />
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Link element</h3>
+    </div>
+    <div class="panel-body">
+        <label for="linkUnitTest">Link for Unit Test</label>
+        <a id="linkUnitTest" href="#top">Click here for testing the link</a>
+    </div>
+</div>
 
-    <label for="textAreaTest">Text Area Test</label>
-    <textarea id="textAreaTest" name="textArea">This is a test for field contains</textarea>
+<script src="javascripts/mockJS.js"></script>
 
-    <script src="javascripts/mockJS.js"></script>
 </body>
 </html>

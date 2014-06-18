@@ -191,7 +191,7 @@ describe('Map Steps', function() {
 
             chain([
                 ['cb', selfMock, mapSteps.iGoToHomepage],
-                ['This is a test for field contains', 'Text Area Test', callbackMock, true, selfMock, mapSteps.fieldContains]
+                ['This is a test for field contains', 'textAreaTest', callbackMock, true, selfMock, mapSteps.fieldContains]
             ]);
 
             return deferCallback.promise;
@@ -283,6 +283,109 @@ describe('Map Steps', function() {
             chain([
                 ['cb', selfMock, mapSteps.iGoToHomepage],
                 ['#textAreaTest This is a test for field contains', callbackMock, selfMock, true, mapSteps.isPresent]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('selecting elements from drop down', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['nodejs','Select Element Unit Test', callbackMock, selfMock, mapSteps.selectFrom]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('i should see n elements', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                [3, "ul#listForNElements li", callbackMock, selfMock, mapSteps.iShouldSeeNElements]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('the button should be', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['buttonUnitTest','en', callbackMock, selfMock, mapSteps.theButtonShouldBe]
+            ]);
+
+            return deferCallback.promise;
+        });
+
+        it('should call callback().fail', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('fail');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['buttonUnitTest','dis', callbackMock, selfMock, mapSteps.theButtonShouldBe]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('i press a button', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['buttonUnitTest', callbackMock, selfMock, mapSteps.iPress]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('i follow a link', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['linkUnitTest', callbackMock, selfMock, mapSteps.iFollow]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('i focus on', function(){
+        it('should call callback()', function(){
+            test = function(callbackValue){
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['fieldExists', callbackMock, selfMock, mapSteps.iFocusOn]
             ]);
 
             return deferCallback.promise;
