@@ -155,7 +155,7 @@ describe('Map Steps', function() {
 
             chain([
                 ['cb', selfMock, mapSteps.iGoToHomepage],
-                ['#fieldExists', callbackMock, true, selfMock, mapSteps.fieldExists]
+                ['<div class="panel-body">inputField</div>', callbackMock, true, selfMock, mapSteps.fieldExists]
             ]);
 
             return deferCallback.promise;
@@ -174,7 +174,7 @@ describe('Map Steps', function() {
 
             chain([
                 ['cb', selfMock, mapSteps.iGoToHomepage],
-                ['#fieldExists2', callbackMock, false, selfMock, mapSteps.fieldExists]
+                ['inputField2', callbackMock, false, selfMock, mapSteps.fieldExists]
             ]);
 
             return deferCallback.promise;
