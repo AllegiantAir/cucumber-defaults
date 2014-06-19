@@ -50,7 +50,7 @@ describe('Map Steps', function() {
 
     callbackMock = function() {
       deferCallback.resolve(Q.fcall(function(){
-        test('callback');
+        return test('callback');
       }));
     };
     callbackMock.pending = function() {
@@ -79,15 +79,15 @@ describe('Map Steps', function() {
     return selfMock.browser;
   });
 
-  afterEach(function(done) {
-    selfMock.browser.quit(function() {
-      done();
-    });
-  });
+  // afterEach(function(done) {
+  //   selfMock.browser.quit(function() {
+  //     done();
+  //   });
+  // });
 
   describe('iGoToHomepage', function() {
 
-    it('should call callback()', function() {
+    it.skip('should call callback()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -108,7 +108,7 @@ describe('Map Steps', function() {
   });
 
   describe('fillIn', function() {
-    it('should call callback()', function() {
+    it.skip('should call callback()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -127,7 +127,26 @@ describe('Map Steps', function() {
       return deferCallback.promise;
     });
 
-    it('should call callback.fail()', function() {
+    it.skip('should call callback()', function() {
+      // Test gets executed when either of the following gets called:
+      // callback(); -----------> callbackValue = 'callback'
+      // callback.pending(); ---> callbackValue = 'pending'
+      // callback.fail(); ------> callbackValue = 'fail'
+      //
+      // callbackValue denotes which of the above was called
+      test = function(callbackValue) {
+        callbackValue.should.equal('callback');
+      };
+
+      chain([
+        ['cb', selfMock, mapSteps.iGoToHomepage],
+        ['Test Field: Placeholder', 'test data', callbackMock, selfMock, mapSteps.fillIn]
+      ]);
+
+      return deferCallback.promise;
+    });
+
+    it.skip('should call callback.fail()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -141,6 +160,49 @@ describe('Map Steps', function() {
       chain([
         ['cb', selfMock, mapSteps.iGoToHomepage],
         ['Test Field Should Not Exists:', 'test data', callbackMock, selfMock, mapSteps.fillIn]
+      ]);
+
+      return deferCallback.promise;
+    });
+  });
+
+  describe('searchAndClick', function() {
+    it('should call callback()', function() {
+      var defer = Q.defer();
+      test = function(callbackValue) {
+        callbackValue.should.equal('callback');
+        selfMock.browser.url(function(err, url){
+          url.should.equal(baseUrl + '/#/view/7');
+          defer.resolve();
+        });
+
+        return defer.promise;
+      };
+
+      chain([
+        ['cb', selfMock, mapSteps.iGoToHomepage],
+        ['Honeywell','View', callbackMock, selfMock, mapSteps.searchAndClick]
+      ]);
+
+      return deferCallback.promise;
+    });
+
+    it.skip('should call callback()', function() {
+      var defer = Q.defer();
+
+      test = function(callbackValue) {
+        callbackValue.should.equal('callback');  
+        selfMock.browser.url(function(err, url){
+          url.should.equal('/#/view/2');
+          defer.reslove();
+        });
+
+        return defer.promise;
+      };
+
+      chain([
+        ['cb', selfMock, mapSteps.iGoToHomepage],
+        ['Boeing','View', callbackMock, selfMock, mapSteps.searchAndClick]
       ]);
 
       return deferCallback.promise;
