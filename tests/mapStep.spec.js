@@ -56,13 +56,13 @@ describe('Map Steps', function() {
 
         callbackMock.pending = function() {
             deferCallback.resolve(Q.fcall(function(){
-                test('pending');
+                return test('pending');
             }));
         };
 
         callbackMock.fail = function() {
             deferCallback.resolve(Q.fcall(function(){
-                test('fail');
+                return test('fail');
             }));
         };
 
