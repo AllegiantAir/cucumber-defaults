@@ -90,7 +90,7 @@ describe('Map Steps', function() {
 
   describe('iGoToHomepage', function() {
 
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -111,7 +111,7 @@ describe('Map Steps', function() {
   });
 
   describe('fillIn', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -130,7 +130,7 @@ describe('Map Steps', function() {
       return deferCallback.promise;
     });
 
-    it.skip('should call callback.fail()', function() {
+    it('should call callback.fail()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -151,7 +151,7 @@ describe('Map Steps', function() {
   });
 
   describe('fieldExists', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -164,7 +164,7 @@ describe('Map Steps', function() {
       return deferCallback.promise;
     });
 
-    it.skip('should call callback.fail()', function() {
+    it('should call callback.fail()', function() {
       // Test gets executed when either of the following gets called:
       // callback(); -----------> callbackValue = 'callback'
       // callback.pending(); ---> callbackValue = 'pending'
@@ -186,7 +186,7 @@ describe('Map Steps', function() {
 
   describe('fieldContains', function(){
 
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
 
       test = function(callbackValue){
         callbackValue.should.equal('callback');
@@ -202,7 +202,7 @@ describe('Map Steps', function() {
   });
 
   describe('checkbox', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -217,7 +217,7 @@ describe('Map Steps', function() {
   });
 
   describe('elementExists', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -232,7 +232,7 @@ describe('Map Steps', function() {
   });
 
   describe('elementContains', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -247,7 +247,7 @@ describe('Map Steps', function() {
   });
 
   describe('hasFocus', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -263,7 +263,7 @@ describe('Map Steps', function() {
   });
 
   describe('isChecked', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -278,7 +278,7 @@ describe('Map Steps', function() {
   });
 
   describe('isPresent', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -293,7 +293,7 @@ describe('Map Steps', function() {
   });
 
   describe('selectFrom', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -308,7 +308,7 @@ describe('Map Steps', function() {
   });
 
   describe.skip('iShouldSeeNElements', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -323,7 +323,7 @@ describe('Map Steps', function() {
   });
 
   describe('theButtonShouldBe', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -336,7 +336,7 @@ describe('Map Steps', function() {
       return deferCallback.promise;
     });
 
-    it.skip('should call callback().fail', function(){
+    it('should call callback().fail', function(){
       test = function(callbackValue){
         callbackValue.should.equal('fail');
       };
@@ -351,7 +351,7 @@ describe('Map Steps', function() {
   });
 
   describe('iPress', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -366,7 +366,7 @@ describe('Map Steps', function() {
   });
 
   describe('iFollow', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -381,7 +381,7 @@ describe('Map Steps', function() {
   });
 
   describe('iFocusOn', function(){
-    it.skip('should call callback()', function(){
+    it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');
       };
@@ -396,7 +396,7 @@ describe('Map Steps', function() {
   });
 
   describe('iGoToUrl', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       var defer = Q.defer();
 
       test = function(callbackValue) {
@@ -419,7 +419,7 @@ describe('Map Steps', function() {
   });
 
   describe('reloadPage', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
 
       test = function(callbackValue) {
         callbackValue.should.equal('callback');
@@ -435,7 +435,7 @@ describe('Map Steps', function() {
   });
 
   describe('goBackOnePage', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       var defer = Q.defer();
 
       test = function(callbackValue) {
@@ -450,7 +450,7 @@ describe('Map Steps', function() {
 
       chain([
         ['cb', selfMock, mapSteps.iGoToHomepage],
-        ['/#/view/7', 'cb', selfMock, mapSteps.iGoToUrl]
+        ['/#/view/7', 'cb', selfMock, mapSteps.iGoToUrl],
         [callbackMock, selfMock, mapSteps.goBackOnePage]
       ]);
 
@@ -459,7 +459,7 @@ describe('Map Steps', function() {
   });
 
   describe('goForwardOnePage', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       var defer = Q.defer();
 
       test = function(callbackValue) {
@@ -474,8 +474,8 @@ describe('Map Steps', function() {
 
       chain([
         ['cb', selfMock, mapSteps.iGoToHomepage],
-        ['/#/view/7', 'cb', selfMock, mapSteps.iGoToUrl]
-        ['cb', selfMock, mapSteps.goBackOnePage]
+        ['/#/view/7', 'cb', selfMock, mapSteps.iGoToUrl],
+        ['cb', selfMock, mapSteps.goBackOnePage],
         [callbackMock, selfMock, mapSteps.goForwardOnePage]
       ]);
 
@@ -484,7 +484,7 @@ describe('Map Steps', function() {
   });
 
   describe('searchAndClick', function() {
-    it.skip('should call callback()', function() {
+    it('should call callback()', function() {
       var defer = Q.defer();
       test = function(callbackValue) {
         callbackValue.should.equal('callback');
