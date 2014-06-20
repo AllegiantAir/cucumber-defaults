@@ -392,4 +392,92 @@ describe('Map Steps', function() {
         });
     });
 
+    describe('iGoToUrl', function() {
+        it('should call callback()', function() {
+            var defer = Q.defer();
+
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+                selfMock.browser.url(function(err, url){
+                    url.should.equal(baseUrl + '/#/view/7');
+                    defer.resolve();
+                });
+
+                return defer.promise;
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['/#/view/7', callbackMock, selfMock, mapSteps.iGoToUrl]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('reloadPage', function() {
+        it('should call callback()', function() {
+
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                [callbackMock, selfMock, mapSteps.reloadPage]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('goBackOnePage', function() {
+        it.skip('should call callback()', function() {
+            var defer = Q.defer();
+
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+                selfMock.browser.url(function(err, url){
+                    url.should.equal(baseUrl + '/');
+                    defer.resolve();
+                });
+
+                return defer.promise;
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['/#/view/7', callbackMock, selfMock, mapSteps.iGoToUrl]
+                [callbackMock, selfMock, mapSteps.goBackOnePage]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
+    describe('goForwardOnePage', function() {
+        it.skip('should call callback()', function() {
+            var defer = Q.defer();
+
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+                selfMock.browser.url(function(err, url){
+                    url.should.equal(baseUrl + '/#/view/7');
+                    defer.resolve();
+                });
+
+                return defer.promise;
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['/#/view/7', callbackMock, selfMock, mapSteps.iGoToUrl]
+                [callbackMock, selfMock, mapSteps.goBackOnePage]
+                [callbackMock, selfMock, mapSteps.goForwardOnePage]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });
+
 });
