@@ -1,176 +1,211 @@
 <html>
   <head>
+      <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet"/>
   </head>
   <body>
-  <label for="t">Test Field:</label>
-  <input type="text" id="t" name="t" placeholder="Test Field:"></input>
-  <input type="text" placeholder="Test Field: Placeholder"></input>
 
-<table ng-class="options.tableClass" ng-show="options.items.length" class="table-lined">
-  <thead>
-    <tr>
-      <!-- ngRepeat: column in options.columns --><th ng-repeat="column in options.columns" ng-class="getColumnClass(column)" scope="col" class="ng-scope ng-binding">Title
-        <!-- ngIf: hasSorting(column) --><a href="javascript:void(0);" ng-if="hasSorting(column)" ng-click="setSortColumn(column)" class="ng-scope">
-          <i ng-class="getSortingClass(column)" class="icon-sort"></i>
-        </a><!-- end ngIf: hasSorting(column) -->
-      </th><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><th ng-if="options.actions" class="actions medium ng-scope" scope="col"></th><!-- end ngIf: options.actions -->
-    </tr>
-  </thead>
-  <tbody>
-    <!-- ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">123User</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/13"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/13"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">abcdre</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/14"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/14"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Allegiant Air</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/1"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/1"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Boeing</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/2"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/2"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">FAA</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/4"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/4"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Honeywell</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/7"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/7">View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Maintenance</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/16"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/16"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/18"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/18"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/15"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/15"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items --><tr ng-repeat="item in options.items" class="ng-scope">
-      <!-- ngRepeat: column in options.columns --><td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td><!-- end ngRepeat: column in options.columns -->
-      <!-- ngIf: options.actions --><td ng-if="options.actions" class="actions ng-scope">
-        <div class="clearfix">
-          <!-- ngIf: hasAction('delete') --><a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a><!-- end ngIf: hasAction('delete') -->
-          <!-- ngIf: hasLink('delete') -->
-          <!-- ngIf: hasState('delete') -->
-          <!-- ngIf: hasAction('edit') -->
-          <!-- ngIf: hasLink('edit') -->
-          <!-- ngIf: hasState('edit') --><a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/17"><i class="fa g4-icon-edit"></i> Edit</a><!-- end ngIf: hasState('edit') -->
-          <!-- ngIf: hasAction('view') -->
-          <!-- ngIf: hasLink('view') -->
-          <!-- ngIf: hasState('view') --><a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/17"><i class="fa g4-icon-view"></i> View</a><!-- end ngIf: hasState('view') -->
-        </div>
-      </td><!-- end ngIf: options.actions -->
-    </tr><!-- end ngRepeat: item in options.items -->
-  </tbody>
-</table>
+  <table ng-class="options.tableClass" ng-show="options.items.length" class="table-lined">
+      <thead>
+      <tr>
+          <th ng-repeat="column in options.columns" ng-class="getColumnClass(column)" scope="col" class="ng-scope ng-binding">Title
+              <a href="javascript:void(0);" ng-if="hasSorting(column)" ng-click="setSortColumn(column)" class="ng-scope">
+                  <i ng-class="getSortingClass(column)" class="icon-sort"></i>
+              </a>
+          </th><
+          <th ng-if="options.actions" class="actions medium ng-scope" scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">123User</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/13"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/13"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">abcdre</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/14"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/14"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Allegiant Air</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/1"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/1"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Boeing</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/2"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/2"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">FAA</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/4"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/4"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Honeywell</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/7"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/7">View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Maintenance</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/16"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/16"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/18"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/18"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/15"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/15"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      <tr ng-repeat="item in options.items" class="ng-scope">
+          <td ng-repeat="column in options.columns" ng-class="column.cellClass" class="ng-scope ng-binding">Manager</td>
+          <td ng-if="options.actions" class="actions ng-scope">
+              <div class="clearfix">
+                  <a class="pull-right margin-left text-muted text-delete ng-scope" ng-if="hasAction('delete')" ng-click="options.actions.deleteAction(item)"><i class="fa g4-icon-trash"></i> Delete</a>
+                  <a class="pull-right primary margin-left ng-scope" ng-if="hasState('edit')" ui-sref="update({sourceDocumentIssuerId: item.id })" href="#/edit/17"><i class="fa g4-icon-edit"></i> Edit</a>
+                  <a class="pull-right margin-left text-muted text-view ng-scope" ng-if="hasState('view')" ui-sref="read({sourceDocumentIssuerId: item.id })" href="#/view/17"><i class="fa g4-icon-view"></i> View</a>
+              </div>
+          </td>
+      </tr>
+      </tbody>
+  </table>
+
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Anchor element - used when testing clicks on a link</h3>
+      </div>
+      <div class="panel-body">
+          <label id="top">Top of the document anchor element</label>
+      </div>
+  </div>
+
+
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Input fields - used for testing focus and other field tests</h3>
+      </div>
+      <div class="panel-body">
+          <label for="t">Test Field:</label>
+          <input style="margin-right:10px;" type="text" id="t" name="t" placeholder="Test Field:"/>
+      </div>
+      <div class="panel-body">
+          <label for="fieldExists">Input field:</label>
+          <input type="text" id="fieldExists" name="inputField" placeholder="Input field:"/>
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Checkbox element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="checkboxTest">Checkbox test:</label>
+          <input type="checkbox" id="checkboxTest" name="checkboxTest" checked title="checkboxTesting"/>
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Text area element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="textAreaTest">Text Area Test</label>
+          <textarea id="textAreaTest" name="textArea">This is a test for field contains</textarea>
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Select Element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="selectUnitTest">Select Element Unit Test</label>
+          <select id="selectUnitTest">
+              <option value="nodejs">NodeJS</option>
+              <option value="express">Express</option>
+              <option value="bootstrap">Bootstrap</option>
+              <option value="angularjs">AngularJS</option>
+          </select>
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">List element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="listForNElements">Label for List</label>
+          <ul id="listForNElements">
+              <li>Element 1</li>
+              <li>Element 2</li>
+              <li>Element 3</li>
+          </ul>
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Button element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="buttonUnitTest">Button Unit Test</label>
+          <input type="submit" id="buttonUnitTest" value="Click Me" name="buttonUnitTest" />
+      </div>
+  </div>
+  <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3 class="panel-title">Link element</h3>
+      </div>
+      <div class="panel-body">
+          <label for="linkUnitTest">Link for Unit Test</label>
+          <a id="linkUnitTest" href="#top">Click here for testing the link</a>
+      </div>
+  </div>
 
   <script src="javascripts/mockJS.js"></script>
   </body>
