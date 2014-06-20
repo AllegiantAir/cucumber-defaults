@@ -50,14 +50,16 @@ describe('Map Steps', function() {
 
         callbackMock = function() {
             deferCallback.resolve(Q.fcall(function(){
-                test('callback');
+                return test('callback');
             }));
         };
+
         callbackMock.pending = function() {
             deferCallback.resolve(Q.fcall(function(){
                 test('pending');
             }));
         };
+
         callbackMock.fail = function() {
             deferCallback.resolve(Q.fcall(function(){
                 test('fail');
@@ -479,5 +481,49 @@ describe('Map Steps', function() {
             return deferCallback.promise;
         });
     });
+
+    describe('searchAndClick', function() {
+        it('should call callback()', function() {
+            var defer = Q.defer();
+            
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');
+                selfMock.browser.url(function(err, url){
+                    url.should.equal(baseUrl + '/#/view/7');
+                    defer.resolve();
+                });
+
+                return defer.promise;
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Honeywell','View', callbackMock, selfMock, mapSteps.searchAndClick]
+            ]);
+
+            return deferCallback.promise;
+        });
+
+        it.skip('should call callback()', function() {
+            var defer = Q.defer();
+
+            test = function(callbackValue) {
+                callbackValue.should.equal('callback');  
+                selfMock.browser.url(function(err, url){
+                    url.should.equal('/#/view/2');
+                    defer.reslove();
+                });
+
+                return defer.promise;
+            };
+
+            chain([
+                ['cb', selfMock, mapSteps.iGoToHomepage],
+                ['Boeing','View', callbackMock, selfMock, mapSteps.searchAndClick]
+            ]);
+
+            return deferCallback.promise;
+        });
+    });    
 
 });
