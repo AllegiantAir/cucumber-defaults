@@ -7,6 +7,7 @@ var mapSteps = require('../lib/map-steps').MapSteps,
   should = require('should'),
   Q = require('q'),
   baseUrl = 'http://localhost:2999',
+  helper = require("../lib/helper").Helper;
   namedSelectors = {
     'fieldset': ".//fieldset[(./@id = %locator% or .//legend[contains(normalize-space(string(.)), %locator%)])]",
     'field': ".//*[self::input | self::textarea | self::select][not(./@type = 'submit' or ./@type = 'image' or ./@type = 'hidden')][(((./@id = %locator% or ./@name = %locator%) or ./@id = //label[contains(normalize-space(string(.)), %locator%)]/@for) or ./@placeholder = %locator%)] | .//label[contains(normalize-space(string(.)), %locator%)]//.//*[self::input | self::textarea | self::select][not(./@type = 'submit' or ./@type = 'image' or ./@type = 'hidden')]",
@@ -87,6 +88,60 @@ describe('Map Steps', function() {
           done();
       });
   });
+
+  describe('helper functions', function() {
+
+    it('test for exists function', function() {
+      var doesExist = 'something';
+      var isNull = null;
+      var isUndefined = null;
+
+      helper.exists(doesExist).should.equal(true);
+      helper.exists(isNull).should.equal(false);
+      helper.exists(isUndefined).should.equal(false);
+
+    });
+
+    it('test for isElementEnabled function', function() {
+      var XPathElementVisible = selfMock.namedSelectors.getXPath('field', 'Visible field:');
+      var XPathElementDisabled = selfMock.namedSelectors.getXPath('field', 'Disabled field:');
+      var XPathElementHidden = selfMock.namedSelectors.getXPath('field', 'Hidden field:');
+
+      browser.elementByXPath(XPathElementVisible, function(err, ele) {
+        helper.isElementEnabled(ele).should.equal(true);
+      });
+
+      browser.elementByXPath(XPathElementDisabled, function(err, ele) {
+        helper.isElementEnabled(ele).should.equal(false);
+      });
+
+      browser.elementByXPath(XPathElementHidden, function(err, ele) {
+        helper.isElementEnabled(ele).should.equal(false);
+      });
+
+    });
+
+    it('test for waitForElementEnabled function', function() {
+      var XPathElementDelayed = selfMock.namedSelectors.getXPath('field', 'Delayed field:');
+
+      browser.elementByXPath(XPathElementDelayed, function(err, ele) {
+        helper.isElementEnabled(ele).should.equal(false);
+      });
+
+      helper.waitForElementEnabled(XPathElementDelayed, 200, 1000, function(err, ele) {
+        console.log(err);
+        helper.isElementEnabled(ele).should.equal(false);
+      });
+
+      helper.waitForElementEnabled(XPathElementDelayed, 200, 3000, function(err, ele) {
+        helper.isElementEnabled(ele).should.equal(true);
+      });
+
+    });
+
+  });
+
+  // TODO: tests bellow should be reviewed!!!
 
   describe('iGoToHomepage', function() {
 
@@ -503,6 +558,6 @@ describe('Map Steps', function() {
 
       return deferCallback.promise;
     });
-  });    
+  });
 
 });
