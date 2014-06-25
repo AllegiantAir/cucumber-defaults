@@ -12,7 +12,8 @@
     "url": "*",
     "config": "*",
     "yaml": "*",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "npm-chain": "git+ssh://git@git.allegiantair.com:7999/qadev/npm-chain.git"
   },
   "devDependencies": {
     "q": "*",
