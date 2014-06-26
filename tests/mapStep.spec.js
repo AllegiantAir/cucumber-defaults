@@ -129,7 +129,6 @@ describe('Map Steps', function() {
       });
 
       helper.waitForElementEnabled(XPathElementDelayed, 200, 1000, function(err, ele) {
-        console.log(err);
         helper.isElementEnabled(ele).should.equal(false);
       });
 
@@ -362,7 +361,7 @@ describe('Map Steps', function() {
     });
   });
 
-  describe.skip('iShouldSeeNElements', function(){
+  describe('iShouldSeeNElements', function(){
     it('should call callback()', function(){
       test = function(callbackValue){
         callbackValue.should.equal('callback');

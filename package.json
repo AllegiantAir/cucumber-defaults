@@ -12,7 +12,8 @@
     "url": "*",
     "config": "*",
     "yaml": "*",
-    "lodash": "^2.4.1"
+    "lodash": "^2.4.1",
+    "express": "^4.4.4"
   },
   "devDependencies": {
     "q": "*",
