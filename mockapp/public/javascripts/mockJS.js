@@ -1,9 +1,17 @@
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(
     function() {
-      element = document.getElementById('divToBeDisplayed');
-      element.style.display = 'block';
+      var elementDivToBeDisplayed = document.getElementById('divToBeDisplayed');
+      elementDivToBeDisplayed.style.display = 'block';
     },
-    1500
+    1000
+  );
+
+  setTimeout(
+    function() {
+      var elementSplash = document.getElementById('splash-destroy');
+      elementSplash.style.display="none";
+    },
+    500
   );
 });
