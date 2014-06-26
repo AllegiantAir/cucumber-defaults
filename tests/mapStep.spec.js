@@ -1,7 +1,7 @@
 var mapSteps = require('../lib/map-steps').MapSteps,
   wd = require('wd'),
   url = require('url'),
-  chain = require('../lib/chain').Chain,
+  chain = require('npm-chain').Chain,
   assert = require('assert'),
   sinon = require('sinon'),
   should = require('should'),

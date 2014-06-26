@@ -13,7 +13,8 @@
     "config": "*",
     "yaml": "*",
     "lodash": "^2.4.1",
-    "express": "^4.4.4"
+    "express": "^4.4.4",
+    "npm-chain": "git+ssh://git@git.allegiantair.com:7999/qadev/npm-chain.git"
   },
   "devDependencies": {
     "q": "*",
