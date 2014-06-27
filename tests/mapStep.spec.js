@@ -98,15 +98,12 @@ describe('Map Steps', function() {
       it('should pass after 500 ms', function(done) {
         var XPathElementVisible = selfMock.namedSelectors.getXPath('field', 'Visible field:');
         mapSteps.iGoToHomepage(function() {
-          browser.waitForElementByXPath(XPathElementVisible, function(err, ele) {
-            helper.waitForElementEnabled(ele, 1000, function(err) {
-              if(err) {
-                console.log(err);
-                throw new Error('should have passed');
-              }
-
-              done();
-            });
+          helper.waitForElementEnabled(XPathElementVisible, 1000, 100, function(err) {
+            if(err) {
+              console.log(err);
+              throw new Error('should have passed');
+            }
+            done();
           });
         },selfMock);
       });
@@ -114,16 +111,13 @@ describe('Map Steps', function() {
       it('should fail before 500 ms', function(done) {
         var XPathElementVisible = selfMock.namedSelectors.getXPath('field', 'Visible field:');
         mapSteps.iGoToHomepage(function() {
-          browser.waitForElementByXPath(XPathElementVisible, function(err, ele) {
-            helper.waitForElementEnabled(ele, 250, function(err) {
-              if(!err) {
-                throw new Error('should have failed');
-              } 
-
-              done();
-            });
+          helper.waitForElementEnabled(XPathElementVisible, 250, 100, function(err) {
+            if(!err) {
+              throw new Error('should have failed');
+            }
+            done();
           });
-        },selfMock);
+        }, selfMock);
       });
 
     });
