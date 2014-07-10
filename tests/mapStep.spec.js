@@ -14,7 +14,8 @@ var mapSteps = require('../lib/map-steps').MapSteps,
     'link': ".//a[./@href][(((./@id = %locator% or contains(normalize-space(string(.)), %locator%)) or contains(./@title, %locator%) or contains(./@rel, %locator%)) or .//img[contains(./@alt, %locator%)])] | .//*[./@role = 'link'][((./@id = %locator% or contains(./@value, %locator%)) or contains(./@title, %locator%) or contains(normalize-space(string(.)), %locator%))]",
     'button': ".//input[./@type = 'submit' or ./@type = 'image' or ./@type = 'button'][(((./@id = %locator% or ./@name = %locator%) or contains(./@value, %locator%)) or contains(./@title, %locator%))] | .//input[./@type = 'image'][contains(./@alt, %locator%)] | .//button[((((./@id = %locator% or ./@name = %locator%) or contains(./@value, %locator%)) or contains(normalize-space(string(.)), %locator%)) or contains(./@title, %locator%))] | .//input[./@type = 'image'][contains(./@alt, %locator%)] | .//*[./@role = 'button'][(((./@id = %locator% or ./@name = %locator%) or contains(./@value, %locator%)) or contains(./@title, %locator%) or contains(normalize-space(string(.)), %locator%))]",
     'link_or_button': ".//a[./@href][(((./@id = %locator% or contains(normalize-space(string(.)), %locator%)) or contains(./@title, %locator%) or contains(./@rel, %locator%)) or .//img[contains(./@alt, %locator%)])] | .//input[./@type = 'submit' or ./@type = 'image' or ./@type = 'button'][((./@id = %locator% or contains(./@value, %locator%)) or contains(./@title, %locator%))] | .//input[./@type = 'image'][contains(./@alt, %locator%)] | .//button[(((./@id = %locator% or contains(./@value, %locator%)) or contains(normalize-space(string(.)), %locator%)) or contains(./@title, %locator%))] | .//input[./@type = 'image'][contains(./@alt, %locator%)] | .//*[(./@role = 'button' or ./@role = 'link')][((./@id = %locator% or contains(./@value, %locator%)) or contains(./@title, %locator%) or contains(normalize-space(string(.)), %locator%))]",
-    'content': "./descendant-or-self::*[contains(normalize-space(.), %locator%)]",
+    'content_contains': "./descendant-or-self::*[contains(normalize-space(.), %locator%) and count(*)=0]",
+    'content_equals': "./descendant-or-self::*[normalize-space(.)=%locator% and count(*)=0]",
     'node_with_content': "./descendant-or-self::text()[contains(normalize-space(.), %locator%)]/..",
     'tagname_content': ".//%tagname%[contains(normalize-space(.), %locator%)]",
     'select': ".//select[(((./@id = %locator% or ./@name = %locator%) or ./@id = //label[contains(normalize-space(string(.)), %locator%)]/@for) or ./@placeholder = %locator%)] | .//label[contains(normalize-space(string(.)), %locator%)]//.//select",
@@ -449,6 +450,32 @@ describe('Map Steps', function() {
       chain([
         ['cb', selfMock, mapSteps.iGoToHomepage],
         ['This is a test for field contains', callbackMock, selfMock, 'true', mapSteps.isPresent]
+      ]);
+
+      return deferCallback.promise;
+    });
+
+    it('should call callback()', function(){
+      test = function(callbackValue){
+        callbackValue.should.equal('callback');
+      };
+
+      chain([
+        ['cb', selfMock, mapSteps.iGoToHomepage],
+        ['qwerty', callbackMock, selfMock, 'false', mapSteps.isPresent]
+      ]);
+
+      return deferCallback.promise;
+    });
+
+    it('should call fail()', function(){
+      test = function(callbackValue){
+        callbackValue.should.equal('fail');
+      };
+
+      chain([
+        ['cb', selfMock, mapSteps.iGoToHomepage],
+        ['Tqwerty', callbackMock, selfMock, 'true', mapSteps.isPresent]
       ]);
 
       return deferCallback.promise;
