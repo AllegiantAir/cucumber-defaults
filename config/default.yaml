@@ -1,0 +1,6 @@
+cucumber:
+  keepBrowserOpen: true
+  browserOptions:
+    browserName: chrome
+  serverOptions: []
+  baseUrl: "http://google.com"
