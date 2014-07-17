@@ -4,4 +4,4 @@ cucumber:
   browserOptions:
     browserName: chrome
   serverOptions: []
-  baseUrl: "http://localhost:2999"
+  baseUrl: "http://192.168.99.99:2999/"
