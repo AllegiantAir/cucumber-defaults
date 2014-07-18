@@ -13,7 +13,19 @@ Feature:
     Scenario: We want to go to homepage and test navigation related steps
         Given I go to the homepage
             And I go to "/#/view/4"
+
+    Scenario: I want to reload the page
+        Given I go to the homepage
             And I reload the page
+
+    Scenario: Test backward one page
+        Given I go to the homepage
+            And I go to "/#/view/4"
+            And I move backward one page
+            
+    Scenario: Test backward one page
+        Given I go to the homepage
+            And I go to "/#/view/4"
             And I move backward one page
             And I move forward one page
 
@@ -67,8 +79,8 @@ Feature:
     Scenario: We want to go to a certain address and test uri
         Given I go to the homepage
             And I go to "/#/view/4"
-            Then I should be on "http://192.168.99.99:2999/#/view/4"
-            Then the url should match "http://192.168.99.99:2999/#/view/4"
+            Then I should be on "http://localhost:2999/#/view/4"
+            Then the url should match "http://localhost:2999/#/view/4"
 
     Scenario: We want to see if a certain text is present
         Given I go to the homepage
@@ -84,3 +96,9 @@ Feature:
         Given I go to the homepage
             Then the "Click Me" button should be enabled
             Then the "Cant Click Me" button should be disabled
+
+    Scenario: When I fill in using a table
+        Given I go to the homepage
+            And I fill in the following:
+                | Test Field: | test1 |
+                | Input field: | test2 |

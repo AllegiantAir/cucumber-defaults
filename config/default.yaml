@@ -1,7 +1,7 @@
 cucumber:
   keepBrowserOpen: true
-  addSleep: 50
+  addSleep: 1000
   browserOptions:
     browserName: chrome
   serverOptions: []
-  baseUrl: "http://192.168.99.99:2999/"
+  baseUrl: "http://localhost:2999/"
