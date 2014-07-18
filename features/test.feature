@@ -58,3 +58,20 @@ Feature:
             Then the "Checkbox test:" field should exist
             When I uncheck "Checkbox test:"
             Then the "Checkbox test:" checkbox should not be checked
+
+    Scenario: We want to go to a certain address and test uri
+        Given I go to the homepage
+            And I go to "/#/view/4"
+            Then I should be on "http://192.168.99.99:2999/#/view/4"
+            Then the url should match "http://192.168.99.99:2999/#/view/4"
+
+    Scenario: We want to see if a certain text is present
+        Given I go to the homepage
+            Then the "Text Area Test" field should exist
+            Then I should see "This is a test for field contains"
+            Then I should see text matching "This is a test for field contains"
+
+    Scenario: We want to see if a certain number of elements exist in a list
+        Given I go to the homepage
+            Then the "Label for List" field should exist
+            Then I should see 4 elements
