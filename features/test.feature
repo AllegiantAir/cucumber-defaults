@@ -29,3 +29,32 @@ Feature:
     Scenario: We want to go to homepage and test follow link step
         Given I go to the homepage
             When I follow "Click here for testing the link"
+
+    Scenario: We want to go to homepage and test if a field is cleared
+        Given I go to the homepage
+            Then the "Contains field:" field should have the value "Lorem ipsum"
+            When I clear field "Contains field:"
+            Then the "Contains field:" field should not have the value "Lorem ipsum"
+
+    Scenario: We want to go to homepage and test if a field has focus
+        Given I go to the homepage
+            Then the "Input field:" field should exist
+            When I click "Input field:"
+            Then the "Input field:" field should have focus
+
+    Scenario: We want to go to homepage and test if we can select from a drop down
+        Given I go to the homepage
+            Then the "Select Element Unit Test" field should exist
+            When I select "Bootstrap" from "Select Element Unit Test"
+
+    Scenario: We want to go to homepage and test if we can check a checkbox
+        Given I go to the homepage
+            Then the "Checkbox test:" field should exist
+            When I check "Checkbox test:"
+            Then the "Checkbox test:" checkbox should be checked
+
+    Scenario: We want to go to homepage and test if we can un-check a checkbox
+        Given I go to the homepage
+            Then the "Checkbox test:" field should exist
+            When I uncheck "Checkbox test:"
+            Then the "Checkbox test:" checkbox should not be checked
