@@ -36,6 +36,11 @@ Feature:
             When I clear field "Contains field:"
             Then the "Contains field:" field should not have the value "Lorem ipsum"
 
+    Scenario: We want to go to homepage and test if a field contains a certain text
+        Given I go to the homepage
+            Then the "Contains field:" field should exist
+            Then the "Contains field:" field should contain "Lorem ipsum"
+
     Scenario: We want to go to homepage and test if a field has focus
         Given I go to the homepage
             Then the "Input field:" field should exist
@@ -74,4 +79,8 @@ Feature:
     Scenario: We want to see if a certain number of elements exist in a list
         Given I go to the homepage
             Then the "Label for List" field should exist
-            Then I should see 4 elements
+            Then I should see "4" elements
+
+    Scenario: We want to see if a button is enabled or disabled
+        Given I go to the homepage
+            Then the "Button Unit Test" button should be enabled
