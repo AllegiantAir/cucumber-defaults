@@ -1,1 +1,1 @@
-module.exports = require('devops-cucumber-defaults').DefaultHooks;
+module.exports = require('../../lib/world').DefaultHooks;

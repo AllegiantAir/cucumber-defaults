@@ -1,3 +1,3 @@
-var devOpsCucumberDefaults = require('devops-cucumber-defaults');
+var devOpsCucumberDefaults = require('../../lib/world');
 
 exports.World = devOpsCucumberDefaults.World;

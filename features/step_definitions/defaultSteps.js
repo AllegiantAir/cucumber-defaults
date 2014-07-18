@@ -1,1 +1,1 @@
-module.exports = require('devops-cucumber-defaults').DefaultSteps;
+module.exports = require('../../lib/world').DefaultSteps;
