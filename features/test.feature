@@ -22,7 +22,7 @@ Feature:
         Given I go to the homepage
             And I go to "/#/view/4"
             And I move backward one page
-            
+
     Scenario: Test backward one page
         Given I go to the homepage
             And I go to "/#/view/4"
@@ -58,6 +58,7 @@ Feature:
             Then the "Input field:" field should exist
             When I click "Input field:"
             Then the "Input field:" field should have focus
+            And the "Test Field:" field should not have focus
 
     Scenario: We want to go to homepage and test if we can select from a drop down
         Given I go to the homepage
@@ -97,8 +98,14 @@ Feature:
             Then the "Click Me" button should be enabled
             Then the "Cant Click Me" button should be disabled
 
+    Scenario: We want to go to homepage and check the document title
+        Given I go to the homepage
+            Then the document title should be "Mock App"
+            And the document title should not be "Something else"
+
     Scenario: When I fill in using a table
         Given I go to the homepage
             And I fill in the following:
                 | Test Field: | test1 |
                 | Input field: | test2 |
+
