@@ -78,9 +78,9 @@ Feature:
 
     Scenario: We want to see if a certain number of elements exist in a list
         Given I go to the homepage
-            Then the "Label for List" field should exist
-            Then I should see "4" elements
+            Then I should see 3 "li" elements
 
     Scenario: We want to see if a button is enabled or disabled
         Given I go to the homepage
-            Then the "Button Unit Test" button should be enabled
+            Then the "Click Me" button should be enabled
+            Then the "Cant Click Me" button should be disabled
