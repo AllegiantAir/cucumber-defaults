@@ -109,3 +109,6 @@ Feature:
                 | Test Field: | test1 |
                 | Input field: | test2 |
 
+    Scenario: We want to go to homepage and search for an item in the table and click one of the options
+        Given I go to the homepage
+            Then I search "Boeing" and I click "Edit"
