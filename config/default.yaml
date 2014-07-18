@@ -1,6 +1,6 @@
 cucumber:
   keepBrowserOpen: true
-  addSleep: 1000
+  addSleep: 50
   browserOptions:
     browserName: chrome
   serverOptions: []
