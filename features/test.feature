@@ -112,3 +112,12 @@ Feature:
     Scenario: We want to go to homepage and search for an item in the table and click one of the options
         Given I go to the homepage
             Then I search "Boeing" and I click "Edit"
+
+    Scenario Outline: I should fill in the following fields
+        Given I go to the homepage
+            And I fill in the fillowing:
+                | <Field1> | <Value1> |
+                | <Field2> | <Value1> |
+
+    Example File:
+        testData.csv
