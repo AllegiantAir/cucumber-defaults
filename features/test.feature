@@ -112,3 +112,10 @@ Feature:
     Scenario: We want to go to homepage and search for an item in the table and click one of the options
         Given I go to the homepage
             Then I search "Boeing" and I click "Edit"
+
+    Scenario Outline: This will test our exampleFile ScenarioOutline
+        Given I go to the homepage
+            And I fill in "<Field>" with "<Value>"
+
+    Example File:
+        testData.csv
