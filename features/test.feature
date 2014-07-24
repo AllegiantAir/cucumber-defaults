@@ -1,7 +1,14 @@
 Feature:
 
-    This is a feature file that can act as an example feature
-    along as a way to test new and upcoming exciting steps.
+    # This is a feature file that can act as an example feature
+    # along as a way to test new and upcoming exciting steps.
+
+    Scenario: We want to test stuff
+        Given I go to the homepage
+        Then I should see "abcdre" and "View" in the same "tr" element
+        Then I should see "abcdre" and "Edit" in the same table row
+        When I fill in "Visible field:" with "a"
+        Given I hit key "Enter"
 
     Scenario: We want to go to homepage and fill in some stuff
         Given I go to the homepage
@@ -113,11 +120,9 @@ Feature:
         Given I go to the homepage
             Then I search "Boeing" and I click "Edit"
 
-    Scenario Outline: I should fill in the following fields
-        Given I go to the homepage
-            And I fill in the fillowing:
-                | <Field1> | <Value1> |
-                | <Field2> | <Value1> |
+    # Scenario Outline: This will test our exampleFile ScenarioOutline
+    #     Given I go to the homepage
+    #         And I fill in "<Field>" with "<Value>"
 
-    Example File:
-        testData.csv
+    # Example File:
+    #     testData.csv
