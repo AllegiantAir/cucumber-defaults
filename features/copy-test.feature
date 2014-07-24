@@ -113,9 +113,18 @@ Feature:
     #     Given I go to the homepage
     #         Then I search "Boeing" and I click "Edit"
 
-    # Scenario Outline: This will test our exampleFile ScenarioOutline
-    #     Given I go to the homepage
-    #         And I fill in "<Field>" with "<Value>"
+    Scenario Outline: This will test our exampleFile ScenarioOutline
+        Given I go to the homepage
+            And I fill in "<Field>" with "<Value>"
 
-    # Example File:
-    #     testData.csv
+Examples:
+| Field | Value |
+| Test Field | Value1 |
+| Test Field | Value2 |
+| Test Field | Value3 |
+| Test Field | Value4 |
+| Test Field | Value5 |
+| Test Field | Value6 |
+| Test Field | Value7 |
+| Test Field | Value8 |
+

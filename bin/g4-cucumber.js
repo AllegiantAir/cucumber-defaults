@@ -3,33 +3,45 @@
 var Q = require('q'),
     _ = require('lodash'),
     fs = require('fs'),
-    csv = require('csv'),
     async = require('async'),
-    config = require('node-yaml-config'),
+    csvConfig = {
+      escape: "\r",
+      separator: ","
+    },
     Stream = require('stream'),
     base = process.cwd();
 
 var ls = Q.denodeify(fs.readdir),
+    write = Q.denodeify(fs.writeFile),
     open = Q.denodeify(fs.open);
 
 var featurePattern = /.feature?/,
     csvPattern = /.csv?/;
 
-config = config.load(base + "/config/csv-config.yaml","csv");
 ls('./features').then(
   function resolve(files) {
     _(files).forEach(function(fileName) {
       if(!featurePattern.exec(fileName))
         return;
 
-      getFile(fileName).then(
+      getFile('/features/' + fileName).then(
         function resolve(fileString) {
+          
           var lines = fileString.split('\n'),
               i = 0;
+
           async.whilst(function() {
-            return i < lines.length;
+            if(i < lines.length) {
+              return true;
+            } else {
+              var newFile = lines.join("\n");
+              write(base + '/features/copy-' + fileName, newFile);
+              return false;
+            }
           }, function(next) {
+            
             if( lines[i].trim() === 'Example File:' && (i + 1 < lines.length) ) {
+            
               var inFile = lines[i + 1].trim();
               if(!csvPattern.exec(inFile)) {
                 console.log("Error: file " + inFile + " is not a csv file!");
@@ -37,17 +49,23 @@ ls('./features').then(
                 // Will eventually add in error
                 next();
               }
-              try {
-                readCsv(fs, inFile, i, next);
-              } catch(err) {
-                console.log(err);
-                i ++;
-                next();
-              }
+
+              readCsv(fs, inFile).then(
+                function _resolve(pipeTable) {
+                  lines.splice(i,1, 'Examples:');
+                  lines.splice(i + 1, 1, pipeTable);
+                  i ++;
+                  next();
+                }, function _reject(reason) {
+                  console.log('reason: ' + reason);
+                }
+              );
+
             } else {
               i ++;
               next();
             }
+
           }, function(err) {
 
           });
@@ -58,81 +76,43 @@ ls('./features').then(
   function reject(reason) {}
 );
 
-function readCsv(fs, inFile, i, next) {
-  var pipeTable = '';
-
-  if(fs.existsSync(inFile)) {
-    var fileReadStream = fs.createReadStream(inFile, {
-      flags: 'r',
-      encoding: 'utf8',
-      fd: null,
-      autoClose: true
-    });
-
-    var readStream = new Stream();
-    readStream.on('data', function(data) {
-      console.log('some data: ' + data);
-      return 'data';
-    });
-
-    readStream.write = function(data) {
-      return 'hello';
-    };
-
-    readStream.end = function(data) {
-      console.log('end: ' + data);
-      return 'hello';
-    };
-
-
-
-    var transformStream = csv.transform(function(record) {
-      var pipeRecord = '';
-      for(var j = 0; j < record.length; j ++) {
-        if(j = 0)
-          pipeRecord = '| ' + record[j] + ' |';
-        else
-          pipeRecord += ' ' + record[j] + ' |';
-      }
-      pipeRecord += "\n";
-      pipeTable += pipeRecord;
-      return pipeRecord; 
-    });
-
-    transformStream.on('finish', function() {
-      console.log('hi' + pipeTable);
-      return pipeTable;
-    });
-
-    transformStream.on('end', function() {
-      console.log('end emmited');
-    });
-
-    transformStream.on('readable', function() {
-      console.log('can read');
-    });
-
-    var transform = fileReadStream.
-    pipe(
-      csv.parse()
-    ).pipe(
-      readStream
-    ).pipe(process.stdout);
-    
-    transform.on('finished', function() {
-      console.log('end');
-      next();
-    });
-  } else {
-    console.log("Error: file " + inFile + " does not exist!");
-    i ++;
-    next();
+function readCsv(fs, inFile) {
+  function getPipeRow(csvLine) {
+    var csvCols = csvLine.split(csvConfig.separator);
+    var row = '|';
+    for(var j = 0; j < csvCols.length; j ++) {
+      row += ' ' + csvCols[j] + ' |';
+    }
+    return row + "\n";
   }
+
+  return Q.Promise(function(resolve, reject, notify) {
+
+    if(fs.existsSync(inFile)) {
+      getFile('/' + inFile).then(
+        function _resolve(fileString) {
+          var csvLines = fileString.split(csvConfig.escape);
+          var examples = getPipeRow(csvLines[0]);
+          for(var i = 1; i < csvLines.length; i ++) {
+            examples += getPipeRow(csvLines[i]);
+          }
+          resolve(examples);
+        },
+        function _reject(reason) {
+          reject(reason);
+        }
+      );
+
+    } else {
+      reject(new Error('File does not exist!'));
+    }
+
+  });
 }
 
 function getFile(file) {
   // Reads in the file and resolves a fileString
-  return open(base + '/features/' + file,'r').then(
+  return open(base + file,'r').then(
     function resolve(fd) {
       var position = 0,
           defer = Q.defer(),
