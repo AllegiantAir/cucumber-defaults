@@ -1,11 +1,11 @@
 {
   "name": "devops-cucumber-defaults",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "dependencies": {
     "config": {
-      "version": "0.4.36",
-      "from": "config@0.4.36",
-      "resolved": "http://registry.npmjs.org/config/-/config-0.4.36.tgz"
+      "version": "0.4.37",
+      "from": "config@0.4.37",
+      "resolved": "http://registry.npmjs.org/config/-/config-0.4.37.tgz"
     },
     "cucumber": {
       "version": "0.4.1",
