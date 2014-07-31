@@ -1,26 +1,25 @@
 {
   "name": "devops-cucumber-defaults",
   "description": "Default for our Cucumber.js setup",
-  "version": "0.2.10",
-  "author": {
+  "version": "1.0.8",
+  "authors": {
     "name": "Jordan Raub",
     "email": "jordan.raub@alligiantair.com"
   },
   "dependencies": {
-    "cucumber": "*",
-    "wd": "*",
-    "url": "*",
-    "config": "*",
-    "yaml": "*",
+    "cucumber": "0.4.1",
+    "wd": "0.3.3",
+    "url": "0.10.1",
+    "config": "0.4.37",
+    "yaml": "0.2.3",
     "lodash": "^2.4.1",
     "express": "^4.4.4",
-    "npm-chain": "git+ssh://git@git.allegiantair.com:7999/qadev/npm-chain.git"
+    "q": "1.0.1"
   },
   "devDependencies": {
-    "q": "*",
-    "should": "*",
-    "sinon": "*",
-    "mocha": "*"
+    "should": "4.0.4",
+    "sinon": "1.10.2",
+    "mocha": "1.20.1"
   },
   "repository": {
     "type": "git",
