@@ -1,16 +1,11 @@
 var world = require('./world'),
-    mapSteps = require('../../lib/world').DefaultMapSteps;
+    ms = require('../../lib/world').DefaultMapSteps,
+    helper = require('../../lib/world').Helper;
 
 var MapSteps = function() {
   this.chainSteps = function(field, data, self) {
-    return mapSteps.iGoToHomepage(self).then(
-      function resolve() {
-        return mapSteps.fillIn(field, data, self);
-      },
-      function reject(err) {
-        return err;
-      }
-    );
+    return Helper.chain(ms.iGoToHomepage, self).
+           chain(ms.fillIn, field, data, self);
   };
 };
 

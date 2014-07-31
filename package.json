@@ -1,7 +1,7 @@
 {
   "name": "devops-cucumber-defaults",
   "description": "Default for our Cucumber.js setup",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "authors": {
     "name": "Jordan Raub",
     "email": "jordan.raub@alligiantair.com"
