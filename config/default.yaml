@@ -1,6 +1,7 @@
 cucumber:
-  keepBrowserOpen: true
+  keepBrowserOpen: false
   addSleep: 50
+  screenShotOnFail: false
   browserOptions:
     browserName: chrome
   serverOptions: []
