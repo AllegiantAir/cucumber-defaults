@@ -35,6 +35,21 @@ Some key words
 
 Bellow are Gherkin steps that you can use to write your test cases. If you cannot find a step to write your test case, please consult with your QAE engineer to build a custom Gherkin step.
 
+###Added Gherkin
+
+You can now run example test data in cucumber 1.0.15. To add csv files add it anywhere in your project space. In your feature file you will have:
+
+Scenario Outline:
+...
+
+Example File:
+
+   pathTo/myExample.csv
+
+You must have your example file in a scenario outline. Running regular cucumber.js will fail. You must run:
+
+node ./node_modules/.bin/g4-cucumber
+
 Defined Gherkin Steps
 
 
