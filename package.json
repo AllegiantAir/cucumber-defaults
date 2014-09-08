@@ -30,6 +30,7 @@
   },
   "main": "lib/world.js",
   "bin": {
+    "g4-cucumber": "bin/g4-cucumber",
     "cucumberSetupDefaults": "bin/defaults.js"
   },
   "readmeFilename": "README.md",
